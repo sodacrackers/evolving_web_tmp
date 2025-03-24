@@ -1,0 +1,5 @@
+name: 'UWMCMS Twig Extension'
+description: 'Support module for additional Twig extensions.'
+package: UWMed
+type: module
+core: 8.x

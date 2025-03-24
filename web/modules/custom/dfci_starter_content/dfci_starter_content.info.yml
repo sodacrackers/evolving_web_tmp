@@ -1,0 +1,7 @@
+name: 'DFCI Starter Content'
+type: module
+description: 'Provides a DevelGenerate plugin to generate starter content for subsites.'
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - devel:devel_generate

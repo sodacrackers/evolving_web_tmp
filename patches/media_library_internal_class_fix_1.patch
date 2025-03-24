@@ -1,0 +1,14 @@
+diff --git a/core/modules/media_library/src/MediaLibraryFieldWidgetOpener.php b/core/modules/media_library/src/MediaLibraryFieldWidgetOpener.php
+index e4ba1d69f..86250225f 100644
+--- a/core/modules/media_library/src/MediaLibraryFieldWidgetOpener.php
++++ b/core/modules/media_library/src/MediaLibraryFieldWidgetOpener.php
+@@ -13,9 +13,6 @@
+
+ /**
+  * The media library opener for field widgets.
+- *
+- * @internal
+- *   This service is an internal part of Media Library's field widget.
+  */
+ class MediaLibraryFieldWidgetOpener implements MediaLibraryOpenerInterface {
+

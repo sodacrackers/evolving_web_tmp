@@ -1,0 +1,8 @@
+services:
+
+  if_lagoonfactsgraph.token_service:
+    class: Drupal\if_lagoonfactsgraph\Service\GetSSHToken
+
+  if_lagoonfactsgraph.graph_service:
+    class: Drupal\if_lagoonfactsgraph\Service\GetGraphQL
+    arguments: ['@http_client']

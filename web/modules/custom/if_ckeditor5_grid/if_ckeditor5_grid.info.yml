@@ -1,0 +1,7 @@
+name: IF CKEditor 5 Grid
+type: module
+description: Adds IF Design System Grid to CKEditor 5
+core_version_requirement: ^9 || ^10
+package: Interpersonal Frequency
+dependencies:
+  - drupal:ckeditor5

@@ -1,0 +1,3 @@
+swiftype-app:
+  js:
+    search-app/build/static/js/main.js: {}

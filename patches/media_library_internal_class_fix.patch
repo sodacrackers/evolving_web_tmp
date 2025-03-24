@@ -1,0 +1,14 @@
+diff --git a/core/modules/media_library/src/Plugin/Field/FieldWidget/MediaLibraryWidget.php b/core/modules/media_library/src/Plugin/Field/FieldWidget/MediaLibraryWidget.php
+index a94bb4ad4..1ec3aa743 100644
+--- a/core/modules/media_library/src/Plugin/Field/FieldWidget/MediaLibraryWidget.php
++++ b/core/modules/media_library/src/Plugin/Field/FieldWidget/MediaLibraryWidget.php
+@@ -40,9 +40,6 @@
+  *   },
+  *   multiple_values = TRUE,
+  * )
+- *
+- * @internal
+- *   Plugin classes are internal.
+  */
+ class MediaLibraryWidget extends WidgetBase implements TrustedCallbackInterface {
+

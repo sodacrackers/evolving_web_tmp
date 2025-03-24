@@ -1,0 +1,14 @@
+{
+  "name": "drupal/decorative_images",
+  "description": "Allow specifying an image as decorative for accessibility.",
+  "type": "drupal-module",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://www.drupal.org/project/decorative_images",
+  "require": {
+    "drupal/core": "^9 || ^10 || ^11"
+  },
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/decorative_images",
+    "source": "https://git.drupalcode.org/project/decorative_images"
+  }
+}

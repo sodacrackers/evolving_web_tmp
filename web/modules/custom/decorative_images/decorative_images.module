@@ -1,0 +1,88 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for the decorative_images module.
+ */
+
+use Drupal\node\NodeInterface;
+use Drupal\media\MediaInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\image\Plugin\Field\FieldType\ImageItem;
+use Drupal\decorative_images\Hooks\DecorativeConfigFormAlter;
+use Drupal\decorative_images\Hooks\DecorativeWidgetFormAlter;
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Adds 'Decorative' options to field configuration.
+ */
+function decorative_images_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  DecorativeConfigFormAlter::alterForm($form, $form_state, $form_id);
+}
+
+/**
+ * Implements hook_field_widget_single_element_form_alter().
+ *
+ * Adds 'Decorative' checkbox to the image widget.
+ */
+function decorative_images_field_widget_single_element_form_alter(array &$element, FormStateInterface $form_state, array $context) {
+  DecorativeWidgetFormAlter::alterForm($element, $form_state, $context);
+}
+
+/**
+ * Implements hook_entity_presave().
+ *
+ * Saves 'Decorative' entity field value.
+ */
+function decorative_images_entity_presave(EntityInterface $entity) {
+  if (!$entity instanceof NodeInterface && !$entity instanceof MediaInterface) {
+    return;
+  }
+
+  foreach ($entity->getFieldDefinitions() as $field_name => $field_definition) {
+    if ($field_definition->getType() !== 'image') {
+      continue;
+    }
+
+    foreach ($entity->get($field_name) as &$item) {
+      $is_decorative = (int) $item->is_decorative ?? 0;
+      \Drupal::service('keyvalue')->get('decorative_images')->set($item->target_id, $is_decorative);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_hook().
+ *
+ * Adds `role="presentation"` to decorative images.
+ */
+function decorative_images_preprocess_field(array &$variables, string $hook): void {
+  if ($variables['field_type'] !== 'image') {
+    return;
+  }
+  foreach ($variables['items'] as &$item) {
+    $image = $item['content']['#item'] ?? NULL;
+    if (!$image instanceof ImageItem) {
+      continue;
+    }
+    $is_decorative = (int) \Drupal::service('keyvalue')->get('decorative_images')->get($image->target_id) ?? 0;
+    if ($is_decorative) {
+      $item['content']['#item_attributes']['role'] = 'presentation';
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_image().
+ *
+ * If decorative image, remove role and set alt to empty string.
+ */
+function decorative_images_preprocess_image(&$variables) {
+  $role = $variables['attributes']['role'] ?? NULL;
+  if ($role === 'presentation') {
+    unset($variables['attributes']['role']);
+    $variables['attributes']['alt'] = '';
+  }
+}

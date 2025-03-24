@@ -1,0 +1,20 @@
+services:
+  if_swiftype.preprocess.page.swiftype_tags:
+    class: \Drupal\if_swiftype\EventSubscriber\Preprocess\SwiftypeTags
+    arguments:
+      [
+        "@if_components.component_data_helper",
+        "@request_stack",
+        "@title_resolver",
+        "@current_route_match",
+        "@config.factory",
+        "@simple_sitemap.generator",
+        "@file_url_generator",
+      ]
+    tags:
+      - { name: event_subscriber }
+
+  if_swiftype.swiftype_blocks_theme:
+    class: Drupal\if_swiftype\EventSubscriber\Theme\SwiftypeBlocks
+    tags:
+      - { name: event_subscriber }

@@ -1,0 +1,126 @@
+diff --git a/enhanced_editor.info.yml b/enhanced_editor.info.yml
+index d945dc97b..29de0638f 100644
+--- a/enhanced_editor.info.yml
++++ b/enhanced_editor.info.yml
+@@ -1,8 +1,7 @@
+ name: 'Enhanced Editor'
+ type: module
+ description: 'Enhanced editor integration'
+-php: 7.4
+-core_version_requirement: ^9
++core_version_requirement: ^9 || ^10
+ package: Editor
+ dependencies:
+   - drupal:json_field
+diff --git a/modules/enhanced_editor_ckeditor/enhanced_editor_ckeditor.info.yml b/modules/enhanced_editor_ckeditor/enhanced_editor_ckeditor.info.yml
+index 75274b3bf..ae2838b7d 100644
+--- a/modules/enhanced_editor_ckeditor/enhanced_editor_ckeditor.info.yml
++++ b/modules/enhanced_editor_ckeditor/enhanced_editor_ckeditor.info.yml
+@@ -1,8 +1,7 @@
+ name: Enhanced Editor - CKeditor support
+ type: module
+ description: Allows use of Drupal's CKeditor within the enhanced editor.
+-php: 7.4
+-core_version_requirement: ^9
++core_version_requirement: ^9 || ^10
+ package: Editor
+ dependencies:
+   - enhanced_editor:enhanced_editor
+diff --git a/modules/enhanced_editor_embed/enhanced_editor_embed.info.yml b/modules/enhanced_editor_embed/enhanced_editor_embed.info.yml
+index f519f183b..cccabeb6e 100644
+--- a/modules/enhanced_editor_embed/enhanced_editor_embed.info.yml
++++ b/modules/enhanced_editor_embed/enhanced_editor_embed.info.yml
+@@ -1,8 +1,7 @@
+ name: Enhanced Editor Embed
+ type: module
+ description: Allows embeding of entities, media, views, etc within the enhanced editor.
+-php: 7.4
+-core_version_requirement: ^9
++core_version_requirement: ^9 || ^10
+ package: Editor
+ dependencies:
+   - enhanced_editor:enhanced_editor
+diff --git a/modules/enhanced_editor_entity/enhanced_editor_entity.info.yml b/modules/enhanced_editor_entity/enhanced_editor_entity.info.yml
+index 2d5d19c3d..1f89c77c8 100644
+--- a/modules/enhanced_editor_entity/enhanced_editor_entity.info.yml
++++ b/modules/enhanced_editor_entity/enhanced_editor_entity.info.yml
+@@ -1,8 +1,7 @@
+ name: Enhanced Editor - Entity Embed support
+ type: module
+ description: Allows embeding of entities within the enhanced editor.
+-php: 7.4
+-core_version_requirement: ^9
++core_version_requirement: ^9 || ^10
+ package: Editor
+ dependencies:
+   - enhanced_editor:enhanced_editor
+diff --git a/modules/enhanced_editor_examples/enhanced_editor_examples.info.yml b/modules/enhanced_editor_examples/enhanced_editor_examples.info.yml
+index 323260ac8..3d235d383 100644
+--- a/modules/enhanced_editor_examples/enhanced_editor_examples.info.yml
++++ b/modules/enhanced_editor_examples/enhanced_editor_examples.info.yml
+@@ -2,8 +2,7 @@ name: Enhanced Editor - Examples
+ type: module
+ description: 'Provides examples of Slice Types and functionality which can used for demonstrating and testing functionality or used as cut-n-paste code snippets for creating new Slice Types.'
+ package: Editor Example
+-php: 7.4
+-core_version_requirement: ^9
++core_version_requirement: ^9 || ^10
+ dependencies:
+   - enhanced_editor:enhanced_editor
+   - enhanced_editor:enhanced_editor_ckeditor
+diff --git a/modules/enhanced_editor_link/enhanced_editor_link.info.yml b/modules/enhanced_editor_link/enhanced_editor_link.info.yml
+index ac5038fb8..dfc43b756 100644
+--- a/modules/enhanced_editor_link/enhanced_editor_link.info.yml
++++ b/modules/enhanced_editor_link/enhanced_editor_link.info.yml
+@@ -1,8 +1,7 @@
+ name: Enhanced Editor - Link support
+ type: module
+ description: Allows use of drupal links within the Enhanced Editor.
+-php: 7.4
+-core_version_requirement: ^9
++core_version_requirement: ^9 || ^10
+ package: Editor
+ dependencies:
+   - drupal:editor
+diff --git a/modules/enhanced_editor_media/enhanced_editor_media.info.yml b/modules/enhanced_editor_media/enhanced_editor_media.info.yml
+index 184645a86..0afc3f2ba 100644
+--- a/modules/enhanced_editor_media/enhanced_editor_media.info.yml
++++ b/modules/enhanced_editor_media/enhanced_editor_media.info.yml
+@@ -1,8 +1,7 @@
+ name: Enhanced Editor - Media support
+ type: module
+ description: Allows embeding of media and use of the media library within the enhanced editor.
+-php: 7.4
+-core_version_requirement: ^9
++core_version_requirement: ^9 || ^10
+ package: Editor
+ dependencies:
+   - enhanced_editor:enhanced_editor
+diff --git a/modules/enhanced_editor_views/enhanced_editor_views.info.yml b/modules/enhanced_editor_views/enhanced_editor_views.info.yml
+index 342a32d9d..c71850baa 100644
+--- a/modules/enhanced_editor_views/enhanced_editor_views.info.yml
++++ b/modules/enhanced_editor_views/enhanced_editor_views.info.yml
+@@ -1,8 +1,7 @@
+ name: Enhanced Editor - Views support
+ type: module
+ description: Allows embeding of Drupal views within the enhanced editor.
+-php: 7.4
+-core_version_requirement: ^9
++core_version_requirement: ^9 || ^10
+ package: Editor
+ dependencies:
+   - enhanced_editor:enhanced_editor
+diff --git a/modules/enhanced_editor_visual_diff/enhanced_editor_visual_diff.info.yml b/modules/enhanced_editor_visual_diff/enhanced_editor_visual_diff.info.yml
+index 6a440f6c5..d2587a02b 100644
+--- a/modules/enhanced_editor_visual_diff/enhanced_editor_visual_diff.info.yml
++++ b/modules/enhanced_editor_visual_diff/enhanced_editor_visual_diff.info.yml
+@@ -1,8 +1,7 @@
+ name: Enhanced Editor - Visual Inline Diff Support
+ type: module
+ description: Provides better visual inline diff support.
+-php: 7.4
+-core_version_requirement: ^9
++core_version_requirement: ^9 || ^10
+ package: Editor
+ dependencies:
+   - enhanced_editor:enhanced_editor

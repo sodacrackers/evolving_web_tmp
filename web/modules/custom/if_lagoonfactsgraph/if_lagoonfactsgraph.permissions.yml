@@ -1,0 +1,3 @@
+view company facts and graphql data:
+  title: 'View corporate metdata and GraphQL facts'
+  description: 'Warning: give this permission to administrators only. It allows viewing Lagoon GraphQL project information.'

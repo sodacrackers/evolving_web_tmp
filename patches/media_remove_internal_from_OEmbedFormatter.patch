@@ -1,0 +1,15 @@
+diff --git a/core/modules/media/src/Plugin/Field/FieldFormatter/OEmbedFormatter.php b/core/modules/media/src/Plugin/Field/FieldFormatter/OEmbedFormatter.php
+index c00623144..a58cbf7c7 100644
+--- a/core/modules/media/src/Plugin/Field/FieldFormatter/OEmbedFormatter.php
++++ b/core/modules/media/src/Plugin/Field/FieldFormatter/OEmbedFormatter.php
+@@ -24,10 +24,6 @@
+ /**
+  * Plugin implementation of the 'oembed' formatter.
+  *
+- * @internal
+- *   This is an internal part of the oEmbed system and should only be used by
+- *   oEmbed-related code in Drupal core.
+- *
+  * @FieldFormatter(
+  *   id = "oembed",
+  *   label = @Translation("oEmbed content"),

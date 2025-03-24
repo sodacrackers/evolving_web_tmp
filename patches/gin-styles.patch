@@ -1,0 +1,69 @@
+diff --git a/dist/css/gin_classic_toolbar.css b/dist/css/gin_classic_toolbar.css
+index 7a5083f81..d38772113 100644
+--- a/dist/css/gin_classic_toolbar.css
++++ b/dist/css/gin_classic_toolbar.css
+@@ -513,6 +513,8 @@
+ #toolbar-item-administration-tray .toolbar-logo img {
+   max-width: 100px;
+   max-height: 35px;
++  height: 100%;
++  min-width: 35px;
+ }
+ 
+ #toolbar-item-user {
+diff --git a/web/themes/contrib/gin/dist/css/gin_horizontal_toolbar.css b/web/themes/contrib/gin/dist/css/gin_horizontal_toolbar.css
+index 48f925c53..34c1cf3ff 100644
+--- a/dist/css/gin_horizontal_toolbar.css
++++ b/dist/css/gin_horizontal_toolbar.css
+@@ -780,6 +780,8 @@
+ #toolbar-item-administration-tray .toolbar-logo img {
+   max-width: 100px;
+   max-height: 35px;
++  height: 100%;
++  min-width: 35px;
+ }
+ 
+ #toolbar-item-user {
+diff --git a/dist/css/gin_toolbar.css b/dist/css/gin_toolbar.css
+index f6767faa3..065f768fa 100644
+--- a/dist/css/gin_toolbar.css
++++ b/dist/css/gin_toolbar.css
+@@ -208,8 +208,10 @@
+   }
+ }
+ .toolbar .toolbar-bar #toolbar-item-administration-tray .toolbar-logo img {
+-  max-width: 36px;
+-  max-height: 40px;
++  max-width: 100px;
++  max-height: 35px;
++  height: 100%;
++  min-width: 35px;
+ }
+ .toolbar .toolbar-bar #toolbar-item-administration-tray a.toolbar-icon-admin-toolbar-tools-help.toolbar-icon-default {
+   -webkit-mask-size: 22px 22px;
+@@ -1130,6 +1132,8 @@ a.toolbar-menu__trigger,
+ #toolbar-item-administration-tray .toolbar-logo img {
+   max-width: 100px;
+   max-height: 35px;
++  height: 100%;
++  min-width: 35px;
+ }
+ 
+ #toolbar-item-user {
+diff --git a/styles/gin_toolbar.scss b/styles/gin_toolbar.scss
+index 70019b89b..766e98f88 100644
+--- a/styles/gin_toolbar.scss
++++ b/styles/gin_toolbar.scss
+@@ -86,8 +86,10 @@ $toolbarIconSize: 22px;
+     // Custom logo
+     #toolbar-item-administration-tray .toolbar-logo {
+       img {
+-        max-width: 36px;
+-        max-height: 40px;
++        max-width: 100px;
++        max-height: 35px;
++        height: 100%;
++        min-width: 35px;
+       }
+     }
+ 

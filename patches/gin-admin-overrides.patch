@@ -1,0 +1,133 @@
+diff --git a/styles/base/_table.scss b/styles/base/_table.scss
+index 77c488393..dc00d4e4e 100644
+--- a/styles/base/_table.scss
++++ b/styles/base/_table.scss
+@@ -65,9 +65,9 @@ table {
+   }
+ 
+   th {
+-    font-size: var(--gin-font-size-s);
++    font-size: var(--gin-font-size-m);
+     font-weight: var(--gin-font-weight-bold);
+-    background: var(--gin-bg-layer);
++    background: #e6e8ef;
+ 
+     &, .form-item__label {
+       color: var(--gin-color-title);
+diff --git a/styles/theme/variables.scss b/styles/theme/variables.scss
+index 652f81814..72b5c5daa 100644
+--- a/styles/theme/variables.scss
++++ b/styles/theme/variables.scss
+@@ -152,7 +152,7 @@
+   --gin-offset-y: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset));
+ 
+   // Links
+-  --gin-link-decoration-style: dotted;
++  --gin-link-decoration-style: solid;
+ 
+   // Max line length
+   --gin-max-line-length: 80ch;
+
+diff --git a/dist/css/base/gin.css b/dist/css/base/gin.css
+index eae04e829..ecb1326eb 100644
+--- a/dist/css/base/gin.css
++++ b/dist/css/base/gin.css
+@@ -1329,7 +1329,7 @@ table thead tr:hover {
+ }
+ 
+ table th {
+-  font-size: var(--gin-font-size-s);
++  font-size: var(--gin-font-size-m);
+   font-weight: var(--gin-font-weight-bold);
+-  background: var(--gin-bg-layer);
++  background: #e6e8ef;
+ }
+diff --git a/dist/css/theme/variables.css b/dist/css/theme/variables.css
+index fc79be561..88f3ae549 100644
+--- a/dist/css/theme/variables.css
++++ b/dist/css/theme/variables.css
+@@ -96,7 +96,7 @@
+   --gin-color-button-text: #fff;
+   --gin-offset-x: var(--gin-toolbar-x-offset);
+   --gin-offset-y: calc(var(--gin-toolbar-y-offset) + var(--gin-sticky-offset));
+-  --gin-link-decoration-style: dotted;
++  --gin-link-decoration-style: solid;
+   --gin-max-line-length: 80ch;
+ }
+ 
+diff --git a/dist/css/base/gin.css b/dist/css/base/gin.css
+index 17fb00e03..3af62d4ff 100644
+--- a/dist/css/base/gin.css
++++ b/dist/css/base/gin.css
+@@ -1334,6 +1334,16 @@ table th {
+   background: (#e1eafc);
+ }
+ 
++table th:first-child {
++  border-top-left-radius: 8px;
++  border-bottom-left-radius: 8px;
++}
++
++table th:last-child {
++  border-top-right-radius: 8px;
++  border-bottom-right-radius: 8px;
++}
++
+ table th, table th .form-item__label {
+   color: var(--gin-color-title);
+ }
+diff --git a/styles/base/_table.scss b/styles/base/_table.scss
+index dc00d4e4e..bfad19464 100644
+--- a/styles/base/_table.scss
++++ b/styles/base/_table.scss
+@@ -73,6 +73,16 @@ table {
+       color: var(--gin-color-title);
+     }
+ 
++    :first-child {
++      border-top-left-radius: 8px;
++      border-bottom-left-radius: 8px;
++    }
++
++    :last-child {
++      border-top-right-radius: 8px;
++      border-bottom-right-radius: 8px;
++    }
++
+     @include mq(medium) {
+       height: auto;
+       padding: var(--gin-spacing-m);
+
+diff --git a/dist/css/base/gin.css b/dist/css/base/gin.css
+index 3af62d4ff..8339c9a1c 100644
+--- a/dist/css/base/gin.css
++++ b/dist/css/base/gin.css
+@@ -1318,10 +1318,11 @@ table.sticky-header::before, table.sticky-header::after {
+ table thead {
+   background: transparent;
+   border-radius: var(--gin-border-m);
++  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+ }
+ 
+ table thead tr {
+-  border-bottom: 2px solid var(--gin-border-color-table-header);
++  border: 0;;
+ }
+ 
+ table thead tr:hover {
+diff --git a/styles/base/_table.scss b/styles/base/_table.scss
+index bfad19464..40fd2292a 100644
+--- a/styles/base/_table.scss
++++ b/styles/base/_table.scss
+@@ -54,9 +54,10 @@ table {
+   thead {
+     background: transparent;
+     border-radius: var(--gin-border-m);
++    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+ 
+     tr {
+-      border-bottom: 2px solid var(--gin-border-color-table-header);
++      border: 0;
+ 
+       &:hover {
+         background: transparent;

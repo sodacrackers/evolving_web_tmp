@@ -1,0 +1,19 @@
+diff --git a/js/plugins/drupalentity/plugin.js b/js/plugins/drupalentity/plugin.js
+index 58a1e81..acb65ec 100644
+--- a/js/plugins/drupalentity/plugin.js
++++ b/js/plugins/drupalentity/plugin.js
+@@ -111,7 +111,13 @@
+           var existingValues = {};
+ 
+           // Host entity's langcode added in entity_embed_field_widget_form_alter().
+-          var hostEntityLangcode = document.getElementById(editor.name).getAttribute('data-entity_embed-host-entity-langcode');
++          var hostEntityLangcode = '';
++          if (document.getElementById(editor.name)) {
++            hostEntityLangcode = document.getElementById(editor.name).getAttribute('data-entity_embed-host-entity-langcode');
++          }
++          else {
++            hostEntityLangcode = 'en';
++          }
+           if (hostEntityLangcode) {
+             existingValues['data-langcode'] = hostEntityLangcode;
+           }

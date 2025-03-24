@@ -1,0 +1,13 @@
+diff --git a/environment_indicator.module b/environment_indicator.module
+index 00f9768..5d75ca8 100644
+--- a/environment_indicator.module
++++ b/environment_indicator.module
+@@ -195,6 +195,8 @@ function environment_indicator_toolbar() {
+       ],
+     ],
+   ];
++  // Disable envitoment switcher.
++  return $items;
+   if (!_environment_indicator_external_integration_is_enabled('toolbar')) {
+     return $items;
+   }

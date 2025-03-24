@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Helper module for Twig extension tests.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function uwmcs_extension_theme($existing, $type, $theme, $path) {
+  return [
+    'uwmcs_extension_filter' => [
+      'variables' => ['message' => NULL, 'safe_join_items' => NULL],
+      'template' => 'uwmcs_extension.filter',
+    ],
+    'uwmcs_extension_function' => [
+      'render element' => 'element',
+      'template' => 'uwmcs_extension.function',
+    ],
+  ];
+}

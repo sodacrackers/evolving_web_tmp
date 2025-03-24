@@ -1,0 +1,29 @@
+diff --git a/js/plugins/drupalmedia/plugin.js b/js/plugins/drupalmedia/plugin.js
+index 1019701b0..1d13a4b15 100644
+--- a/js/plugins/drupalmedia/plugin.js
++++ b/js/plugins/drupalmedia/plugin.js
+@@ -101,7 +101,7 @@
+         pathName: Drupal.t('Embedded media'),
+         editables: {
+           caption: {
+-            selector: 'figcaption',
++            selector: 'figcaption,smc-figure > *[slot="caption"]',
+             allowedContent: 'a[!href]; em strong cite code br',
+             pathName: Drupal.t('Caption')
+           }
+@@ -234,7 +234,7 @@
+             return n.type === CKEDITOR.NODE_ELEMENT;
+           };
+
+-          var embeddedMediaContainer = this.data.hasCaption ? this.element.findOne('figure') : this.element;
++          var embeddedMediaContainer = this.data.hasCaption ? this.element.findOne('figure,smc-figure') : this.element;
+           var embeddedMedia = embeddedMediaContainer.getFirst(isElementNode);
+
+           if (this.data.link) {
+@@ -338,4 +338,4 @@
+       linkCommandIntegrator(editor);
+     }
+   });
+-})(jQuery, Drupal, CKEDITOR);
+\ No newline at end of file
++})(jQuery, Drupal, CKEDITOR);

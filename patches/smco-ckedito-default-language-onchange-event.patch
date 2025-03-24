@@ -1,0 +1,40 @@
+diff --git a/js/plugins/drupalmedia/plugin.es6.js b/js/plugins/drupalmedia/plugin.es6.js
+index 7a0c5a4..6921db5 100644
+--- a/js/plugins/drupalmedia/plugin.es6.js
++++ b/js/plugins/drupalmedia/plugin.es6.js
+@@ -222,6 +222,7 @@
+               widget._setUpDynamicEditables();
+               widget._setUpEditButton();
+               editor.fire('unlockSnapshot');
++              editor.fire('saveSnapshot');
+             });
+           }
+ 
+diff --git a/js/plugins/drupalmedia/plugin.js b/js/plugins/drupalmedia/plugin.js
+index 6269316..1019701 100644
+--- a/js/plugins/drupalmedia/plugin.js
++++ b/js/plugins/drupalmedia/plugin.js
+@@ -138,8 +138,13 @@
+               }
+             });
+           }
+-
+-          var hostEntityLangcode = document.getElementById(editor.name).getAttribute('data-media-embed-host-entity-langcode');
++          var hostEntityLangcode = '';
++          if (document.getElementById(editor.name)) {
++            hostEntityLangcode = document.getElementById(editor.name).getAttribute('data-media-embed-host-entity-langcode');
++          }
++          else {
++            hostEntityLangcode = 'en';
++          }
+ 
+           if (hostEntityLangcode) {
+             data.hostEntityLangcode = hostEntityLangcode;
+@@ -172,6 +177,7 @@
+               widget._setUpEditButton();
+ 
+               editor.fire('unlockSnapshot');
++              editor.fire('saveSnapshot');
+             });
+           }
+ 

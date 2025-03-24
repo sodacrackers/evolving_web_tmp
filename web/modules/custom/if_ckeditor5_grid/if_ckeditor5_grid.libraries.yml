@@ -1,0 +1,28 @@
+twoColLeftGrid:
+  js:
+    js/build/twoColLeftGridPlugin.js: { preprocess: false, minified: true }
+  dependencies:
+    - core/ckeditor5
+
+twoColRightGrid:
+  js:
+    js/build/twoColRightGridPlugin.js: { preprocess: false, minified: true }
+  dependencies:
+    - core/ckeditor5
+
+twoColGrid:
+  js:
+    js/build/twoColGridPlugin.js: { preprocess: false, minified: true }
+  dependencies:
+    - core/ckeditor5
+
+threeColGrid:
+  js:
+    js/build/threeColGridPlugin.js: { preprocess: false, minified: true }
+  dependencies:
+    - core/ckeditor5
+
+admin.grid:
+  css:
+    theme:
+      css/grid.admin.css: {  }

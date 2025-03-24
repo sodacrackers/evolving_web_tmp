@@ -1,0 +1,44 @@
+{% set search_bar__base_class = 'big-search-bar' %}
+
+<div {{ bem(search_bar__base_class) }}>
+  <div class="search-bar-container flexgrid">
+    <div {{ bem('title', [], search_bar__base_class, ['search-title col-xxl-3 col-xl-5 col-l-12'] ) }}>
+      {% include "@atoms/text/headings/_heading.twig" with {
+        heading_level: 2,
+        heading: "I'm looking for:",
+      } %}
+    </div>
+    <div {{ bem('input', [], search_bar__base_class, ['search-form col-xxl-9 col-xl-7 col-l-12'] ) }}>
+      {% if form is defined %}
+        {{ form }}
+      {% else %}
+        <div {{ bem('form-wrapper', [], search_bar__base_class, [] ) }}>
+          <div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-keys form-item-keys search-form__input">
+            <label class="visually-hidden" for="homepage-search">Search the Website or Catalog</label>
+            <input autocorrect="none" autocapitalize="none" id="homepage-search" spellcheck="false" type="text" name="search" value="" size="60" maxlength="60" class="homepage-search-textbox form-text form-item__textfield" required="required" aria-required="true" placeholder="Search the catalog" />
+            <i class="homepage-search-widget-button">{% include "@atoms/icon/icon.twig" with {
+              icon_type: 'solid',
+              icon_name: 'arrow-right',
+            } %}</i>
+          </div>
+        </div>
+      {% endif %}
+      <ul class="homepage-search-radios form-item--radio">
+        {% include "@atoms/forms/radio/radio.twig" with {
+          radios: {
+            'catalog': {
+              'title': 'Catalog',
+              'checked': 'checked',
+              'group': group
+            },
+            'website': {
+              'title': 'Website',
+              'checked': false,
+              'group': group
+            }
+          }
+        } %}
+      </ul>
+    </div>
+  </div>
+</div>

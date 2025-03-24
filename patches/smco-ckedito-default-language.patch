@@ -1,0 +1,20 @@
+diff --git a/js/plugins/drupalmedia/plugin.js b/js/plugins/drupalmedia/plugin.js
+index 6269316..4db9ca4 100644
+--- a/js/plugins/drupalmedia/plugin.js
++++ b/js/plugins/drupalmedia/plugin.js
+@@ -138,8 +138,13 @@
+               }
+             });
+           }
+-
+-          var hostEntityLangcode = document.getElementById(editor.name).getAttribute('data-media-embed-host-entity-langcode');
++          var hostEntityLangcode = '';
++          if (document.getElementById(editor.name)) {
++            hostEntityLangcode = document.getElementById(editor.name).getAttribute('data-media-embed-host-entity-langcode');
++          }
++          else {
++            hostEntityLangcode = 'en';
++          }
+ 
+           if (hostEntityLangcode) {
+             data.hostEntityLangcode = hostEntityLangcode;

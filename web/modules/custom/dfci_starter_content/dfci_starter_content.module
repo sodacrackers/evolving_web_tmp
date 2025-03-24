@@ -1,0 +1,114 @@
+<?php
+
+/**
+ * @file
+ * Dfci_starter_content.module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_entity_presave().
+ *
+ * Make devel_generate content reasonable lengths.
+ */
+function dfci_starter_content_entity_presave(EntityInterface $entity) {
+
+  $entity_type = $entity->getEntityTypeId();
+
+  if ($entity_type === 'node') {
+    if ($entity->bundle() === 'person') {
+      // Set the format on field_bio.
+      $value = $entity->get('field_bio')->value;
+      $entity->set('field_bio', [
+        'value' => '<p>' . str_replace("\n\n", "</p>\n<p>", $value) . '</p>',
+        'format' => 'basic_html',
+      ]);
+
+    }
+  }
+
+  if (in_array($entity_type, ['block_content', 'storage'])) {
+
+    $field_definitions = $entity->getFieldDefinitions();
+    foreach ($field_definitions as $field_name => $field_definition) {
+
+      $type = $field_definition->getType();
+      $value = $entity->get($field_name)->value;
+
+      // Ensure devel set value.
+      if (!$value || empty(trim($value))) {
+        $value = substr(str_shuffle('abcdefghijklmnopqrstuvwxyz'), 0, 8) . ' ' . $field_name;
+      }
+
+      // Make paragraphs shorter.
+      if (in_array($type, ['string_long', 'text_long'])) {
+        $entity->set($field_name, _dfci_starter_content_trim_paragraphs($value, 3));
+      }
+
+      // Make paragraphs shorter.
+      if ($field_name === 'field_description') {
+        $value = _dfci_starter_content_trim_paragraphs($value, 1);
+        $entity->set($field_name, $value);
+      }
+
+      // Make strings shorter.
+      if (in_array($type, ['string'])) {
+        $entity->set($field_name, _dfci_starter_content_trim_words($value));
+      }
+
+      // Make strings shorter.
+      $match = (bool) preg_match('/headline|summary/', $field_name);
+      if ($match) {
+        $value = _dfci_starter_content_trim_paragraphs($value, 1);
+        $value = _dfci_starter_content_trim_words($value);
+        $entity->set($field_name, $value);
+      }
+
+      // Limit media-gallery to 6 items.
+      if ($field_name === 'field_media' && $type === 'entity_reference') {
+        $items = $entity->get($field_name)->referencedEntities();
+        if (count($items) > 6) {
+          $entity->set($field_name, array_slice($items, 0, 6));
+        }
+      }
+
+    }
+  }
+}
+
+/**
+ * Limit number of paragraphs.
+ *
+ * @param string $text
+ *   The original text.
+ * @param int $max
+ *   Maximum number of paragraphs.
+ *
+ * @return string
+ *   The text limited to the specified number of paragraphs.
+ */
+function _dfci_starter_content_trim_paragraphs($text, $max = 4) {
+  $paragraphs = explode("\n\n", $text ?? '');
+  $num_paragraphs = mt_rand(1, $max);
+  return implode("\n\n", array_slice($paragraphs, 0, $num_paragraphs));
+}
+
+/**
+ * Limit number of words.
+ *
+ * @param string $text
+ *   The original text.
+ * @param int $max
+ *   Maximum number of words.
+ *
+ * @return string
+ *   The text limited to the specified number of words.
+ */
+function _dfci_starter_content_trim_words($text, $max = 8) {
+  $words = explode(' ', strip_tags($text) ?? '');
+  if (count($words) > $max) {
+    $words = array_slice($words, 0, $max);
+  }
+  return implode(' ', $words);
+}

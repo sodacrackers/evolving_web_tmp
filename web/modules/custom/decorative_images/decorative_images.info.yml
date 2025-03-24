@@ -1,0 +1,6 @@
+name: 'Decorative Image'
+type: module
+description: 'Allow specifying an image as having a decorative, presentation role.'
+core_version_requirement: ^9 || ^10 || ^11
+dependencies:
+  - image

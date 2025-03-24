@@ -1,0 +1,13 @@
+diff --git a/modules/enhanced_editor_ckeditor/src/EnhancedEditorCkeditorJsSettings.php b/modules/enhanced_editor_ckeditor/src/EnhancedEditorCkeditorJsSettings.php
+index bb2aef928..466c0868d 100644
+--- a/modules/enhanced_editor_ckeditor/src/EnhancedEditorCkeditorJsSettings.php
++++ b/modules/enhanced_editor_ckeditor/src/EnhancedEditorCkeditorJsSettings.php
+@@ -74,7 +74,7 @@ public function editorJsSettingsAlter(array $settings): array {
+    *   The url of core's ckeditor.
+    */
+   private function ckeditorUrl(): string {
+-    $ckeditorLibrary = $this->libraryDiscovery->getLibraryByName('core', 'ckeditor');
++    $ckeditorLibrary = $this->libraryDiscovery->getLibraryByName('ckeditor', 'ckeditor');
+
+     return $this->fileUrlGenerator->generateString($ckeditorLibrary['js'][0]['data'])
+       . ((str_contains($ckeditorLibrary['js'][0]['data'], '?')) ? '&' : '?')

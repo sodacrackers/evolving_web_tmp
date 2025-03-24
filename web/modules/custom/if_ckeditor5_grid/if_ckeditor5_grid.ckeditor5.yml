@@ -1,0 +1,99 @@
+# If using yml to configure plugins, rename this to {module_name}.ckeditor5.yml.
+# If using annotations, this file can be removed.
+# @see https://www.drupal.org/docs/drupal-apis/plugin-api/annotations-based-plugins
+#   For information on using annotations to define plugins.
+# @see the CKEditor 5 module's README.md for more details regarding plugin
+#   configuration options.
+# cSpell:ignore simplebox demobox
+
+if_ckeditor5_grid_twoColLeftGrid:
+  # Use the provider: property for this plugin to depend on another module.
+
+  # Configuration that will be sent to CKEditor 5 JavaScript plugins.
+  ckeditor5:
+    plugins:
+      - twoColLeftGridPlugin.TwoColLeftGrid
+    # *Additional configuration properties*
+    # config: data sent to the constructor of any CKEditor 5 plugin
+    #   editorPluginName:
+    #     editorPluginProperty: editorPluginValue
+
+  # Configuration that will be used directly by Drupal.
+  drupal:
+    label: 'IF Grid (2-col Left)'
+    # The library loaded while using the editor.
+    library: if_ckeditor5_grid/twoColLeftGrid
+    # The library loaded when configuring the text format using this plugin.
+    admin_library: if_ckeditor5_grid/admin.grid
+    toolbar_items:
+      # This should match the name of the corresponding plugin exported in the
+      # plugin's index.js.
+      twoColLeftGrid:
+        label: 'Grid (2-col Left)'
+    # If the plugin does not provide elements, set this as
+    # `elements: false`
+    elements:
+      # Note that it necessary for elements to separately provide both the tag
+      # (f.e. `<h2>`) and the attribute being added to the tag
+      # (f.e. `<h2 class="simple-box-title">`).
+      - <div>
+      - <div class="flexgrid-nm two-col-left">
+      - <div class="col-xxl-3 col-sidebar">
+      - <div class="col-xxl-9 col-main">
+    # *Additional configuration properties*
+    # conditions: for setting additional criteria that must be met for the
+    #   plugin to be active.
+    # class: Optional PHP class that makes it possible for the plugin to provide
+    #   dynamic values, or a configuration UI.
+
+if_ckeditor5_grid_twoColRightGrid:
+  ckeditor5:
+    plugins:
+      - twoColRightGridPlugin.TwoColRightGrid
+  drupal:
+    label: 'IF Grid (2-col Right)'
+    library: if_ckeditor5_grid/twoColRightGrid
+    admin_library: if_ckeditor5_grid/admin.grid
+    toolbar_items:
+      twoColRightGrid:
+        label: 'Grid (2-col Right)'
+    elements:
+      - <div>
+      - <div class="flexgrid-nm two-col-right">
+      - <div class="col-xxl-9 col-main">
+      - <div class="col-xxl-3 col-sidebar">
+
+if_ckeditor5_grid_twoColGrid:
+  ckeditor5:
+    plugins:
+      - twoColGridPlugin.TwoColGrid
+  drupal:
+    label: 'IF Grid (2-col)'
+    library: if_ckeditor5_grid/twoColGrid
+    admin_library: if_ckeditor5_grid/admin.grid
+    toolbar_items:
+      twoColGrid:
+        label: 'Grid (2-col)'
+    elements:
+      - <div>
+      - <div class="flexgrid-nm two-col">
+      - <div class="col-xxl-6 col-first">
+      - <div class="col-xxl-6 col-second">
+
+if_ckeditor5_grid_threeColGrid:
+  ckeditor5:
+    plugins:
+      - threeColGridPlugin.ThreeColGrid
+  drupal:
+    label: 'IF Grid (3-col)'
+    library: if_ckeditor5_grid/threeColGrid
+    admin_library: if_ckeditor5_grid/admin.grid
+    toolbar_items:
+      threeColGrid:
+        label: 'Grid (3-col)'
+    elements:
+      - <div>
+      - <div class="flexgrid-nm three-col">
+      - <div class="col-xxl-4 col-first">
+      - <div class="col-xxl-4 col-second">
+      - <div class="col-xxl-4 col-third">

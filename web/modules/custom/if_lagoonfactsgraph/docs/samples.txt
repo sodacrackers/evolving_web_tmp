@@ -1,0 +1,49 @@
+
+
+ssh -p 32222 \
+  -o ConnectTimeout=5 \
+  -o LogLevel=FATAL \
+  -o UserKnownHostsFile=/dev/null \
+  -o StrictHostKeyChecking=no \
+  -i ssh/id_interpersonalfrequency \
+  -v \
+  lagoon@ssh.lagoon.amazeeio.cloud token \
+  2>&1
+
+
+query AllProjects {
+    allProjects {
+        id
+        name
+        gitUrl
+        productionEnvironment
+        environments(type: PRODUCTION) {
+            name
+            id
+            route
+            facts {
+                name
+                value
+                description
+                source
+            }
+        }
+    }
+}
+
+
+query ProjectByName {
+    projectByName(name: "joco01") {
+        name
+        gitUrl
+        environments {
+            id
+            name
+            route
+            facts {
+                name
+                value
+            }
+        }
+    }
+}

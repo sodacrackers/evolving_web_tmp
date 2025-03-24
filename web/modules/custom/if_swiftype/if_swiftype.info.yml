@@ -1,0 +1,5 @@
+name: IF Swiftype
+description: Implement Swiftype Search within Drupal
+package: Interpersonal Frequency
+type: module
+core_version_requirement: ^9 || ^10

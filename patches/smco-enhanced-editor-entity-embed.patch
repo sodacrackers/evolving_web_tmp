@@ -1,0 +1,66 @@
+diff --git a/build/webcomponents.js b/build/webcomponents.js
+index 22fa14c..96a06e1 100644
+--- a/build/webcomponents.js
++++ b/build/webcomponents.js
+@@ -275,20 +275,23 @@ class DrupalMedia extends HTMLElement {
+         return;
+       }
+     } else {
+-      const media = JSON.parse(this.getAttribute('media'));
+-      if (media.hasOwnProperty('embed')) {
+-        if (media.embed.hasOwnProperty('embedHTML') && media.embed.embedHTML !== null && media.embed.embedHTML.length > 1){
+-          this.renderDrupalEntity(this.shadowRoot, media.embed.embedHTML);
+-          return;
+-        }
+-        else {
+-          // TODO: Only make these SVGs available if the media element is required.
+-          this.shadowRoot.innerHTML = `<span class="input needed">
+-                <svg width="800" height="549" xmlns="http://www.w3.org/2000/svg">
+-                  <path d="M0 0v549h800V0H0zm80 73h640v403H80V73zm157 50c-34 0-61 24-61 54s27 54 61 54c33 0 61-24 61-54s-28-54-61-54zm242 60l-97 122-52-45-152 140h467L479 183z" color="#000" fill="#d3d3d326" style="isolation:auto;mix-blend-mode:normal"/>
+-                </svg>
+-            </span>`;
+-          return;
++      setTimeout(1);
++      if (this.hasAttribute('media')) {
++        const media = JSON.parse(this.getAttribute('media'));
++        if (media.hasOwnProperty('embed')) {
++          if (media.embed.hasOwnProperty('embedHTML') && media.embed.embedHTML !== null && media.embed.embedHTML.length > 1){
++            this.renderDrupalEntity(this.shadowRoot, media.embed.embedHTML);
++            return;
++          }
++          else {
++            // TODO: Only make these SVGs available if the media element is required.
++            this.shadowRoot.innerHTML = `<span class="input needed">
++                  <svg width="800" height="549" xmlns="http://www.w3.org/2000/svg">
++                    <path d="M0 0v549h800V0H0zm80 73h640v403H80V73zm157 50c-34 0-61 24-61 54s27 54 61 54c33 0 61-24 61-54s-28-54-61-54zm242 60l-97 122-52-45-152 140h467L479 183z" color="#000" fill="#d3d3d326" style="isolation:auto;mix-blend-mode:normal"/>
++                  </svg>
++              </span>`;
++            return;
++          }
+         }
+       }
+     }
+@@ -351,14 +354,15 @@ class DrupalEntity extends HTMLElement {
+   render() {
+     const entity = JSON.parse(this.getAttribute('entity'));
+     this.shadowRoot.innerHTML = `<span class="loading">loading...</span>`;
+-
+-
+-    if (entity.hasOwnProperty('embed')) {
+-      if (entity.embed.hasOwnProperty('embedHTML') && entity.embed.embedHTML !== null && entity.embed.embedHTML.length > 1){
+-        this.renderDrupalEntity(this.shadowRoot, entity.embed.embedHTML)
+-      }
+-      else {
+-        this.shadowRoot.innerHTML = `<span class="input needed">Select Entity</span>`;
++    setTimeout(1);
++    if (entity) {
++      if (entity.hasOwnProperty('embed')) {
++        if (entity.embed.hasOwnProperty('embedHTML') && entity.embed.embedHTML !== null && entity.embed.embedHTML.length > 1){
++          this.renderDrupalEntity(this.shadowRoot, entity.embed.embedHTML)
++        }
++        else {
++          this.shadowRoot.innerHTML = `<span class="input needed">Select Entity</span>`;
++        }
+       }
+     }
+   }

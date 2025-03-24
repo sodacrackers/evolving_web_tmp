@@ -1,0 +1,7 @@
+name: 'DFCI Webforms'
+type: module
+description: 'Restricts webform email destination domains.'
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - webform:webform

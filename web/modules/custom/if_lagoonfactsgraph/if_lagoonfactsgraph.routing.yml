@@ -1,0 +1,30 @@
+
+if_lagoonfactsgraph.welcome:
+  path: '/admin/content/graph'
+  defaults:
+    _controller: '\Drupal\if_lagoonfactsgraph\Controller\FactsController::projects'
+    _title: 'Lagoon Facts'
+  requirements:
+    _permission: 'view company facts and graphql data'
+
+if_lagoonfactsgraph.projects:
+  path: '/admin/content/graph/projects'
+  defaults:
+    _controller: '\Drupal\if_lagoonfactsgraph\Controller\FactsController::projects'
+    _title: 'Lagoon Facts'
+  requirements:
+    _permission: 'view company facts and graphql data'
+
+if_lagoonfactsgraph.facts:
+  path: '/admin/content/graph/facts'
+  defaults:
+    _controller: '\Drupal\if_lagoonfactsgraph\Controller\FactsController::facts'
+  requirements:
+    _permission: 'view company facts and graphql data'
+
+if_lagoonfactsgraph.token:
+  path: '/admin/content/graph/tokens'
+  defaults:
+    _controller: '\Drupal\if_lagoonfactsgraph\Controller\FactsController::token'
+  requirements:
+    _permission: 'view company facts and graphql data'

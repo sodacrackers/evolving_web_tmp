@@ -1,0 +1,5 @@
+name: IFSight Facts GraphQL
+description: 'IF Graph provides Lagoon Amazee Facts display.'
+type: module
+package: Interpersonal Frequency
+core_version_requirement: '^10'

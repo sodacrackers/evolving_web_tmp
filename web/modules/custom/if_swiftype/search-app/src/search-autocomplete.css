@@ -1,0 +1,45 @@
+/* .button.sui-search-box__submit {}. */
+
+.header__search {
+  position: relative;
+}
+
+/* From if_design_system theme. */
+.header__search input {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: #fff;
+  font-size: 1rem;
+  max-width: 18rem;
+  width: 100%;
+  padding: 0.5rem 3rem 0.5rem 0.75rem;
+}
+
+.header__search input::placeholder {
+  color: #fff;
+  font-style: normal;
+}
+
+.header__search .icon {
+  color: #fff;
+  font-size: 1rem;
+  right: 30px;
+  top: 7px;
+  position: absolute;
+  width: 0;
+  z-index: 1;
+}
+
+/* Autocomplete styling */
+.sui-search-box__autocomplete-container .sui-search-box__results-list {
+  cursor: pointer;
+  list-style: none;
+  font-weight: bold;
+  font-size: 0.9em;
+  padding: 0.5rem 3rem 0.5rem 0.75rem;
+  position: absolute;
+  background: #fff;
+  z-index: 20;
+  margin: 0;
+}

@@ -1,0 +1,44 @@
+diff --git a/core/modules/media/js/plugins/drupalmedia/plugin.es6.js b/core/modules/media/js/plugins/drupalmedia/plugin.es6.js
+index 7a0c5a4213..4c4bc08aae 100644
+--- a/core/modules/media/js/plugins/drupalmedia/plugin.es6.js
++++ b/core/modules/media/js/plugins/drupalmedia/plugin.es6.js
+@@ -132,7 +132,7 @@
+ 
+         editables: {
+           caption: {
+-            selector: 'figcaption',
++            selector: 'figcaption,smc-figure > *[slot="caption"]',
+             allowedContent: 'a[!href]; em strong cite code br',
+             pathName: Drupal.t('Caption'),
+           },
+@@ -322,7 +322,7 @@
+ 
+           // Find the actual embedded media in the DOM.
+           const embeddedMediaContainer = this.data.hasCaption
+-            ? this.element.findOne('figure')
++            ? this.element.findOne('figure,smc-figure')
+             : this.element;
+           let embeddedMedia = embeddedMediaContainer.getFirst(isElementNode);
+           // If there is a link, the top-level element is the `a` tag, and the
+diff --git a/core/modules/media/js/plugins/drupalmedia/plugin.js b/core/modules/media/js/plugins/drupalmedia/plugin.js
+index 626931693c..511acdfe61 100644
+--- a/core/modules/media/js/plugins/drupalmedia/plugin.js
++++ b/core/modules/media/js/plugins/drupalmedia/plugin.js
+@@ -101,7 +101,7 @@
+         pathName: Drupal.t('Embedded media'),
+         editables: {
+           caption: {
+-            selector: 'figcaption',
++            selector: 'figcaption,smc-figure > *[slot="caption"]',
+             allowedContent: 'a[!href]; em strong cite code br',
+             pathName: Drupal.t('Caption')
+           }
+@@ -228,7 +228,7 @@
+             return n.type === CKEDITOR.NODE_ELEMENT;
+           };
+ 
+-          var embeddedMediaContainer = this.data.hasCaption ? this.element.findOne('figure') : this.element;
++          var embeddedMediaContainer = this.data.hasCaption ? this.element.findOne('figure,smc-figure') : this.element;
+           var embeddedMedia = embeddedMediaContainer.getFirst(isElementNode);
+ 
+           if (this.data.link) {

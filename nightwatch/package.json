@@ -1,0 +1,25 @@
+{
+  "name": "uwmcms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "nightwatch": "^1.3.4"
+  },
+  "devDependencies": {
+    "chromedriver": "^90.0.1",
+    "dotenv": "^8.2.0",
+    "geckodriver": "^1.19.1",
+    "selenium-server": "^3.141.59"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "debug": "node --inspect-brk node_modules/.bin/nightwatch",
+    "tests": "nightwatch -c nightwatch.conf.js",
+    "tests:browserstack": "nightwatch -c nightwatch.conf.js --browserstack"
+  },
+  "author": "",
+  "license": "ISC"
+}

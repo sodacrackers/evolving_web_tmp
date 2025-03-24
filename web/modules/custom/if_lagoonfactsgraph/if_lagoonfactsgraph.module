@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Module helpers.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function if_lagoonfactsgraph_help($route_name, RouteMatchInterface $route_match) {
+  if (stripos($route_name, 'if_lagoonfactsgraph') !== FALSE) {
+    $output = '<p>Module paths:
+    <a href="/admin/content/graph/projects">projects</a>,
+    <a href="/admin/content/graph/facts">facts</a> and graph
+    <a href="/admin/content/graph/tokens">token</a>.</p>
+    <p>And page
+    <a href="?format=csv">CSV download</a>,
+    <a href="?format=json">JSON download</a>,
+    <a href="?token=xxxxxxxx">custom bearer token</a>.</p>
+    ';
+    return $output;
+  }
+}

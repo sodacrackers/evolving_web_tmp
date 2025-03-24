@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ */
+
+use Drupal\dfci_webforms\Plugin\WebformHandler\DfciWebformEmailValidation;
+
+/**
+ * Implements hook_webform_handler_info_alter().
+ */
+function dfci_webforms_webform_handler_info_alter(array &$handlers) {
+  if (isset($handlers['email'])) {
+    $handlers['email']['class'] = DfciWebformEmailValidation::class;
+  }
+}

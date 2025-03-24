@@ -1,0 +1,71 @@
+diff --git a/enhanced_editor.module b/enhanced_editor.module
+index 8ade39b43..147961dfe 100644
+--- a/enhanced_editor.module
++++ b/enhanced_editor.module
+@@ -61,7 +61,7 @@ function _enhanced_editor_theme_css($theme = NULL) {
+   if (!isset($theme)) {
+     $theme = \Drupal::config('system.theme')->get('default');
+   }
+-  if (isset($theme) && $theme_path = drupal_get_path('theme', $theme)) {
++  if (isset($theme) && $theme_path = \Drupal::service('extension.list.theme')->getPath($theme)) {
+     $info = \Drupal::service('extension.list.theme')->getExtensionInfo($theme);
+     if (isset($info['enhanced_editor_stylesheets'])) {
+       $css = $info['enhanced_editor_stylesheets'];
+@@ -109,7 +109,7 @@ function _enhanced_editor_theme_js($theme = NULL) {
+   if (!isset($theme)) {
+     $theme = \Drupal::config('system.theme')->get('default');
+   }
+-  if (isset($theme) && $theme_path = drupal_get_path('theme', $theme)) {
++  if (isset($theme) && $theme_path = \Drupal::service('extension.list.theme')->getPath($theme)) {
+     $info = \Drupal::service('extension.list.theme')->getExtensionInfo($theme);
+     if (isset($info['enhanced_editor_javascript'])) {
+       $css = $info['enhanced_editor_javascript'];
+diff --git a/js/editor.js b/js/editor.js
+index f4557a073..e8dec3b6f 100644
+--- a/js/editor.js
++++ b/js/editor.js
+@@ -32,7 +32,7 @@
+       // Setup each editor.
+       Object.keys(settings.enhancedEditor).forEach(function (id) {
+         // Find the editor iframe for this id, but only do it once.
+-        var iframeElement = $(context).find('#' + id + '_editor').once('enhanced_editor').get(0);
++        var iframeElement = $(context).find('#' + id + '_editor').get(0);
+
+         // If we don't have one, just exit.
+         if (!iframeElement) {
+diff --git a/src/Plugin/EnhancedEditorPlugin/ThemeWebComponents.php b/src/Plugin/EnhancedEditorPlugin/ThemeWebComponents.php
+index e67776eb4..7f48c251f 100644
+--- a/src/Plugin/EnhancedEditorPlugin/ThemeWebComponents.php
++++ b/src/Plugin/EnhancedEditorPlugin/ThemeWebComponents.php
+@@ -32,8 +32,13 @@ public function getInstanceEditorSettings(): array {
+    */
+   private function additionalCss(): array {
+     $css = _enhanced_editor_theme_css();
+-    $css = array_map('file_create_url', $css);
+-    return array_map('file_url_transform_relative', $css);
++    $css = array_map(function ($uri) {
++      return \Drupal::service('file_url_generator')->generateAbsoluteString($uri);
++    }, $css);
++
++    return array_map(function ($fileUrl) {
++      return \Drupal::service('file_url_generator')->transformRelative($fileUrl);
++    }, $css);
+   }
+
+   /**
+@@ -47,8 +52,13 @@ private function additionalCss(): array {
+    */
+   private function additionalJs(): array {
+     $js = _enhanced_editor_theme_js();
+-    $js = array_map('file_create_url', $js);
+-    return array_map('file_url_transform_relative', $js);
++    $js = array_map(function ($uri) {
++      return \Drupal::service('file_url_generator')->generateAbsoluteString($uri);
++    }, $js);
++
++    return array_map(function ($fileUrl) {
++      return \Drupal::service('file_url_generator')->transformRelative($fileUrl);
++    }, $js);
+   }
+
+ }

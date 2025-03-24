@@ -1,0 +1,10 @@
+# if_swiftype.routing.yml
+
+# Provide a empty /search page for Elastic Search results.
+if_swiftype.content:
+  path: '/search'
+  defaults:
+    _controller: '\Drupal\if_swiftype\Controller\IfSwiftypeController::content'
+    _title: 'Search'
+  requirements:
+    _permission: 'access content'

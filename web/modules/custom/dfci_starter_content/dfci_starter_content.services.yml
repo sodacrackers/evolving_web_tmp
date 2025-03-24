@@ -1,0 +1,7 @@
+services:
+
+  dfci_starter_content.drush.commands.content_commands:
+    class: Drupal\dfci_starter_content\Drush\Commands\ContentCommands
+    arguments: []
+    tags:
+      - { name: drush.command }
