@@ -2,6 +2,23 @@
 
 namespace Drupal\if_swiftype\EventSubscriber\Preprocess;
 
+/**
+ * @file
+ * Page html head tags for Swiftype.
+ *
+ * This file adds metatags to pages read by the third-party search crawler,
+ * Swiftype. It adds Swiftype metatags to pages, nodes, and views for indexing.
+ * There're some business rules for special content types or fields, to leverage
+ * features in Swiftype like "boosting" or "exclusion".
+ *
+ * We also make read SimpleSitemap settings to determine rules on a per-page
+ * basis.
+ *
+ * @see https://swiftype.com/documentation/site-search/guides/schema-design
+ * @see https://api.druphelp.com/api/hook_event_dispatcher/modules%21core_event_dispatcher%21src%21Event%21Theme%21PageAttachmentsEvent.php/class/PageAttachmentsEvent/3.x
+ * @see https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21theme.api.php/function/hook_page_attachments/10
+ */
+
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Controller\TitleResolverInterface;
 use Drupal\Core\Entity\EntityInterface;
