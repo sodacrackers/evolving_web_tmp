@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 10px;
+      }
+      #source {
+        height: 5rem;
+        max-height: 7rem;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        padding: 0.5em;
+        margin-bottom: 1em;
+        font-family: sans-serif;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+      }
+      #markdown {
+        width: 100%;
+        height: 25rem;
+        font-family: monospace;
+      }
+      button {
+        margin: 0.5em 0;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="insertClipboard()">Insert Clipboard</button>
+
+    <p>Rich text (<tt>ctrl-c in document</tt>):</p>
+
+    <div id="source" contenteditable="true" placeholder="Paste here..."></div>
+
+    <button onclick="convert()">Convert to Markdown</button>
+
+    <p>Markdown Output:</p>
+
+    <textarea id="markdown" readonly></textarea><br />
+
+    <button onclick="copyMarkdown()">Copy Markdown</button>
+
+    <script>
+      function convert() {
+        const turndownService = new TurndownService();
+        const html = document.getElementById("source").innerHTML;
+        const markdown = turndownService.turndown(html);
+        document.getElementById("markdown").value = markdown;
+      }
+
+      function insertClipboard() {
+        navigator.clipboard
+          .read()
+          .then((items) => {
+            for (const item of items) {
+              if (item.types.includes("text/html")) {
+                item.getType("text/html").then((blob) => {
+                  blob.text().then((html) => {
+                    document.getElementById("source").innerHTML = html;
+                  });
+                });
+                return;
+              } else if (item.types.includes("text/plain")) {
+                item.getType("text/plain").then((blob) => {
+                  blob.text().then((text) => {
+                    document.getElementById("source").innerText = text;
+                  });
+                });
+                return;
+              }
+            }
+          })
+          .catch((err) => {
+            alert(
+              "Unable to read rich clipboard content. Try pasting manually."
+            );
+            console.error(err);
+          });
+      }
+
+      function copyMarkdown() {
+        const markdownText = document.getElementById("markdown").value;
+        navigator.clipboard
+          .writeText(markdownText)
+          .then(() => {
+            alert("Markdown copied to clipboard!");
+          })
+          .catch((err) => {
+            alert("Failed to copy markdown.");
+            console.error(err);
+          });
+      }
+    </script>
+  </body>
+</html>
